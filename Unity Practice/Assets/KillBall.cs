@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KillBall : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class KillBall : MonoBehaviour
             if (distance < 0.5)
             {
                 Destroy(this.gameObject);
+                Spawning.NumOfBalls--;
             }
         }
     }

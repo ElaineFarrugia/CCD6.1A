@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawning : MonoBehaviour
 {
     public GameObject BallPrefab;   //variable declaration
-    int NumOfBalls = 0;
+    public static int NumOfBalls = 0;
 
     // Start is called before the first frame update
     void Start()
