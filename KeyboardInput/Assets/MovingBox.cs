@@ -14,34 +14,45 @@ public class MovingBox : MonoBehaviour
         Vector3 bottomLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
         Vector3 bottomRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, 0));
 
-        xMin = topLeft.x; //or bottomLeft.x
-        xMax = topRight.x; //or bottomRight.x
-        yMin = bottomLeft.y; //or bottomRight.y
-        yMax = topLeft.y; //or topRight.y
+        xMin = topLeft.x + 0.5f; //or bottomLeft.x
+        xMax = topRight.x - 0.5f; //or bottomRight.x
+        yMin = bottomLeft.y + 0.5f; //or bottomRight.y
+        yMax = topLeft.y - 0.5f; //or topRight.y
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            this.transform.position = new Vector3(this.transform.position.x + 1,
+        {
+
+            float newXPosition = Mathf.Clamp(this.transform.position.x + 1, xMin, xMax);
+
+            this.transform.position = new Vector3(newXPosition,
                                                   this.transform.position.y,
                                                   this.transform.position.z);
-
+        }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-            this.transform.position = new Vector3(this.transform.position.x - 1,
+        {
+            float newXPosition = Mathf.Clamp(this.transform.position.x - 1, xMin, xMax);
+
+            this.transform.position = new Vector3(newXPosition,
                                                   this.transform.position.y,
                                                   this.transform.position.z);
-
+        }
         if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            float newYPosition = Mathf.Clamp(this.transform.position.y + 1, yMin, yMax);
             this.transform.position = new Vector3(this.transform.position.x,
-                                                  this.transform.position.y + 1,
+                                                  newYPosition,
                                                   this.transform.position.z);
-
+        }
         if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            float newYPosition = Mathf.Clamp(this.transform.position.y - 1, yMin, yMax);
             this.transform.position = new Vector3(this.transform.position.x,
-                                                  this.transform.position.y - 1,
+                                                  newYPosition,
                                                   this.transform.position.z);
-
+        }
     }
 }
