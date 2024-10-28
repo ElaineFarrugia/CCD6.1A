@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Dog : Pet
 {
-    int barkingLevel;
+    public int barkingLevel;
 }

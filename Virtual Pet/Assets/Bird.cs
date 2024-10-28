@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Bird : Pet
 {
-    int wingSpan;
+    public int wingSpan;
 }
