@@ -1,20 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Dog : Pet
 {
-    public int barkingLevel;
+    private int barkingLevel;
+
+    //getter
+    public int GetBarkingLevel()
+    { return barkingLevel; }
+
+    //setter
+    public void SetBarkingLevel(int NewBarkingLevel)
+    { barkingLevel = NewBarkingLevel; }
 
     public int CalculateHumanYears()
-        { return age * 7; }
+    { return GetAge() * 7; }
 
-    public string GetInfo()
+    public new string GetInfo()
     {
-        return "Name: " + name +
-                "\nAge: " + age +
-                "\nHappiness: " + happinessLevel +
-                "\nEnergy: " + energyLevel +
+        return base.GetInfo() +
                 "\nBarking Level: " + barkingLevel;
     }
 }

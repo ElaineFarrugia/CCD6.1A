@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class Bird : Pet
 {
-    public int wingSpan;
+    private int wingSpan;
+
+    //setter
+    public void SetWingSpan(int NewWingSpan)
+    { wingSpan = NewWingSpan; }
+
+    //getter
+    public int GetWingSpan()
+    { return wingSpan; }
 
     public int CalculateHumanYears()
-    { return age * 10; }
+    { return GetAge() * 10; }
 
-    public string GetInfo()
+    //the "new" keyword means we are
+    //rewriting a method that already
+    //exists in the parent class
+    public new string GetInfo()
     {
-        return "Name: " + name +
-                "\nAge: " + age +
-                "\nHappiness: " + happinessLevel +
-                "\nEnergy: " + energyLevel +
+        return base.GetInfo() +
                 "\nWingSpan: " + wingSpan;
     }
 }
