@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pet
+public abstract class Pet
 {
     private string name;
     private int age;
     private int happinessLevel;
     private int energyLevel;
+
+    public Pet() { } //parameter-less constructor
 
     public Pet(string name, int age, int happinessLevel,
                                 int energyLevel)
@@ -17,6 +19,7 @@ public class Pet
         this.happinessLevel = happinessLevel;
         this.energyLevel = energyLevel;
     }
+
 
     //getter
     public string GetName()
@@ -49,18 +52,14 @@ public class Pet
     public void SetEnergyLevel(int NewEnergyLevel)
     { energyLevel = NewEnergyLevel; }
 
+    public abstract void play();
 
     public void feed()
     {
         energyLevel += 1;
         happinessLevel += 1;
     }
-
-    public void play()
-    {
-        energyLevel -= 1;
-        happinessLevel += 1;
-    }
+    
 
     public void sleep()
     {
